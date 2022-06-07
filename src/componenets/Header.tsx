@@ -1,5 +1,6 @@
 import React from "react";
 
+// Text content
 export const Header = () => {
   return (
     <div className="headerWrapper">
