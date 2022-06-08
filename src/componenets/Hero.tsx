@@ -3,10 +3,33 @@ import { diceGen, getRandom } from "./Data";
 import { DiceElements } from "./SingleDice";
 import { nanoid } from "nanoid";
 
-export const Hero = () => {
-  const [dicesFromData, setDicesFromData] = React.useState(diceGen);
-  const [endGame, setEndGame] = React.useState(false);
+interface HeroProps {
+  isItTheEndToggle: (rightValue: boolean) => void;
+  isItTheEnd: boolean;
+  mainReset: () => void;
+  dicesFromData: {
+    id: number;
+    color: boolean;
+    value: number;
+  }[];
+  setDicesFromData: React.Dispatch<
+    React.SetStateAction<
+      {
+        id: number;
+        color: boolean;
+        value: number;
+      }[]
+    >
+  >;
+}
 
+export const Hero = ({
+  isItTheEndToggle,
+  isItTheEnd,
+  mainReset,
+  dicesFromData,
+  setDicesFromData,
+}: HeroProps) => {
   // NAZWA FUNKCJI---|-------LEGENDA FUNKCJI PO KOLEJI------------------------
   // colorToggle     |Zaznaczenie elementów (zmiana wartosci color na true/false)
   // diceElements    |generowanie 10 elementów.
@@ -49,21 +72,7 @@ export const Hero = () => {
   // useEffect that checks if the game is finieshed and according to this function button changes
 
   React.useEffect(() => {
-    // setEndGame((prevEndGame) => {
-    //   for (let i = 0; i < dicesFromData.length; i++) {
-    //     if (
-    //       dicesFromData[0].value === dicesFromData[i].value &&
-    //       dicesFromData[i].color === true
-    //     ) {
-    //       prevEndGame = true;
-    //     } else {
-    //       return (prevEndGame = false);
-    //     }
-    //   }
-    //   return prevEndGame;
-    // }
-
-    // chhecks colors
+    // checks colors
     const allColored = dicesFromData.every((obj) => obj.color);
     // checks values
     const firstValue = dicesFromData[0].value;
@@ -71,20 +80,14 @@ export const Hero = () => {
       (obj) => firstValue === obj.value
     );
 
-    allColored && allSameValues && setEndGame(true);
+    allColored && allSameValues && isItTheEndToggle(true);
   }, [dicesFromData]);
-
-  // Reset of the game when game ended
-  const reset = () => {
-    setDicesFromData(diceGen);
-    setEndGame(false);
-  };
 
   return (
     <div className="heroWrapper">
       <div className="diceContainer">{diceElements}</div>
-      {endGame ? (
-        <button className="rollBtn" onClick={reset}>
+      {isItTheEnd ? (
+        <button className="rollBtn" onClick={mainReset}>
           Start again?
         </button>
       ) : (

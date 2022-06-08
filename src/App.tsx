@@ -3,24 +3,56 @@ import "./App.css";
 import { Header } from "./componenets/Header";
 import { Hero } from "./componenets/Hero";
 import { Summary } from "./componenets/Summary";
+import { diceGen } from "./componenets/Data";
 
 function App() {
-  const [darkMode, setDarkMode] = React.useState(false);
+  const [darkMode, setDarkMode] = React.useState(true);
+  const [isItTheEnd, setIsItTheEnd] = React.useState(false);
+  const [dicesFromData, setDicesFromData] = React.useState(diceGen);
+
+  // dark mode
   const darkModeToggle = () => {
     setDarkMode((prevState) => !prevState);
   };
-
-  const styles = {
+  // Game ended
+  const isItTheEndToggle = (rightValue: boolean) => {
+    setIsItTheEnd(rightValue);
+  };
+  const reset = () => {
+    setDicesFromData(diceGen);
+    setIsItTheEnd(false);
+  };
+  // Styles
+  const darkModeStyles = {
     backgroundColor: darkMode ? "var(--add-color)" : "var(--bck-color)",
   };
+  const gameContainerStyle = {
+    display: isItTheEnd ? "none" : "flex",
+  };
+  const summaryContainerStyle = {
+    display: isItTheEnd ? "flex" : "none",
+  };
+
+  console.log(isItTheEnd);
+
   return (
-    <div className="wrapper" style={styles}>
-      <div className="gameContainer">
+    <div className="wrapper" style={darkModeStyles}>
+      <div className="gameContainer" style={gameContainerStyle}>
         <Header toggle={darkModeToggle} darkMode={darkMode} />
-        <Hero />
+        <Hero
+          isItTheEndToggle={isItTheEndToggle}
+          isItTheEnd={isItTheEnd}
+          mainReset={reset}
+          dicesFromData={dicesFromData}
+          setDicesFromData={setDicesFromData}
+        />
       </div>
-      <div className="summaryContainer">
-        <Summary />
+      <div className="summaryContainer" style={summaryContainerStyle}>
+        <Summary
+          isItTheEndToggle={isItTheEndToggle}
+          isItTheEnd={isItTheEnd}
+          mainReset={reset}
+        />
       </div>
     </div>
   );

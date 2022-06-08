@@ -169,6 +169,6 @@ input:checked + .slider:before {
 /* SUMMARY CONTAINER */
 .summaryContainer {
   color: aliceblue;
-  display: none;
+  /* display: none; */
 }
 /* END OF SUMMARY CONTAINER */
