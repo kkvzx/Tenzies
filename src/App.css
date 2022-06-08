@@ -45,7 +45,8 @@
   text-align: center;
   font-family: "Inter", sans-serif;
 }
-.headerWrapper h1 {
+.headerWrapper h1,
+.summaryWrapper h2 {
   font-size: 26px;
 }
 .headerWrapper p {
@@ -55,7 +56,10 @@
 /* HERO STYLING */
 .heroWrapper {
   font-family: "Inter", sans-serif;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .diceContainer {
@@ -81,10 +85,18 @@
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
-
+.btnContainer {
+  width: 250px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  position: relative;
+}
 .rollBtn {
   width: 110px;
-  height: 36px;
+  min-height: 36px;
   border-radius: 4px;
   border: none;
   background: var(--add-color);
@@ -93,7 +105,27 @@
   font-family: "Inter", sans-serif;
   letter-spacing: 1px;
   cursor: pointer;
-  margin: 0 0 30px 0;
+}
+.smallDiceContainer {
+  position: absolute;
+  align-items: center;
+  min-height: 36px;
+  top: 0;
+  right: 0;
+  display: flex;
+  width: 69px;
+}
+.smallDiceContainer {
+  justify-content: left;
+  width: 69px;
+}
+.smallDiceContainer p {
+  font-size: 0.9rem;
+}
+
+.smallDice {
+  margin: 5px;
+  color: var(--add-color);
 }
 
 /* Darkmode btn */
@@ -160,15 +192,60 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+/* START OF SUMMARY CONTAINER */
 
-.gameContainer {
-  /* display: none; */
+.summaryWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 40px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
-/* END OF GAME CONTAINER */
 
-/* SUMMARY CONTAINER */
-.summaryContainer {
-  color: aliceblue;
-  /* display: none; */
+.scoreboard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+.bestOf,
+.casual {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 15px;
+  position: relative;
+}
+
+.faDice {
+  width: 60px;
+  height: 60px;
+  color: black;
+  /* margin: 0 20px; */
+}
+.firstDice {
+  color: var(--add-color);
+  margin: 10px;
+  font-size: 1.3rem;
+}
+.bestOfDice {
+  color: var(--text-color);
+  font-weight: 700;
+  margin: 10px;
+  font-size: 1.3rem;
+}
+.trophy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
 /* END OF SUMMARY CONTAINER */
