@@ -1,6 +1,10 @@
 import React from "react";
 import { diceGen, getRandom } from "./Data";
 import { DiceElements } from "./SingleDice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDice } from "@fortawesome/free-solid-svg-icons";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
+
 import { nanoid } from "nanoid";
 
 interface HeroProps {
@@ -21,6 +25,8 @@ interface HeroProps {
       }[]
     >
   >;
+  count: number;
+  counter: () => void;
 }
 
 export const Hero = ({
@@ -29,6 +35,8 @@ export const Hero = ({
   mainReset,
   dicesFromData,
   setDicesFromData,
+  count,
+  counter,
 }: HeroProps) => {
   // NAZWA FUNKCJI---|-------LEGENDA FUNKCJI PO KOLEJI------------------------
   // colorToggle     |Zaznaczenie elementów (zmiana wartosci color na true/false)
@@ -67,6 +75,7 @@ export const Hero = ({
         return obj.color === false ? { ...obj, value: getRandom() } : obj;
       });
     });
+    counter();
   };
 
   // useEffect that checks if the game is finieshed and according to this function button changes
@@ -86,15 +95,21 @@ export const Hero = ({
   return (
     <div className="heroWrapper">
       <div className="diceContainer">{diceElements}</div>
-      {isItTheEnd ? (
-        <button className="rollBtn" onClick={mainReset}>
-          Start again?
-        </button>
-      ) : (
-        <button className="rollBtn" onClick={randomBoxNumber}>
-          Run
-        </button>
-      )}
+      <div className="btnContainer">
+        {isItTheEnd ? (
+          <button className="rollBtn" onClick={mainReset}>
+            Start again?
+          </button>
+        ) : (
+          <button className="rollBtn" onClick={randomBoxNumber}>
+            Run
+          </button>
+        )}
+        <div className="smallDiceContainer">
+          <FontAwesomeIcon icon={faDice} className="smallDice" />
+          <p>{count}</p>
+        </div>
+      </div>
     </div>
   );
 };
