@@ -86,9 +86,6 @@ export default App;
 // TODO
 // Track the number of rolls
 // Na karcie summary zrobić szkic tego jak ma wyglądać - spróbować to zrobić w figmie
-// karta summary ma zawierać liczbę odświeżeń danego podejścia, czas i najlepszy dotyczczasowy wynik
-// Track the time it took to win
+// karta summary ma zawierać liczbę odświeżeń danego podejścia i najlepszy dotyczczasowy wynik
+// Track the time it took to win  //za dużo renderów całego programu więc zrezygnowano
 // Save your best time to localStorage
-
-// NEXT PROJECT - QUIZZICAL TRIVIA
-// 11:45
