@@ -82,13 +82,3 @@ function App() {
 }
 
 export default App;
-
-// TODO
-// Track the number of rolls
-// Na karcie summary zrobić szkic tego jak ma wyglądać - spróbować to zrobić w figmie
-// karta summary ma zawierać liczbę odświeżeń danego podejścia, czas i najlepszy dotyczczasowy wynik
-// Track the time it took to win
-// Save your best time to localStorage
-
-// NEXT PROJECT - QUIZZICAL TRIVIA
-// 11:45
