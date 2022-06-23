@@ -1,0 +1,18 @@
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+/* GENERAL STYLING */
+* {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --bck-color: #f7efe9;
+  --main-color: #e1d5c9;
+  --add-color: #202224;
+  --text-color: #b29d5d;
+}

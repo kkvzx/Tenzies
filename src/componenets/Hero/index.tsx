@@ -1,9 +1,19 @@
 import React from "react";
-import { diceGen, getRandom } from "./Data";
-import { DiceElements } from "./SingleDice";
+import { getRandom } from "./Data";
+import { SingleDice as DiceElements } from "./Singledice/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDice } from "@fortawesome/free-solid-svg-icons";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
+
+import {
+  HeroWrapper,
+  DiceContainer,
+  ButtonContainer,
+  SmallDiceContainer,
+  HeroP,
+  SmallDice,
+} from "./HeroElements";
+import { RollButton } from "../Summary/SummaryElements";
 
 import { nanoid } from "nanoid";
 
@@ -93,23 +103,21 @@ export const Hero = ({
   }, [dicesFromData]);
 
   return (
-    <div className="heroWrapper">
-      <div className="diceContainer">{diceElements}</div>
-      <div className="btnContainer">
+    <HeroWrapper>
+      <DiceContainer>{diceElements}</DiceContainer>
+      <ButtonContainer>
         {isItTheEnd ? (
-          <button className="rollBtn" onClick={mainReset}>
-            Start again?
-          </button>
+          <RollButton onClick={mainReset}>Start again?</RollButton>
         ) : (
-          <button className="rollBtn" onClick={randomBoxNumber}>
-            Run
-          </button>
+          <RollButton onClick={randomBoxNumber}>Run</RollButton>
         )}
-        <div className="smallDiceContainer">
-          <FontAwesomeIcon icon={faDice} className="smallDice" />
-          <p>{count}</p>
-        </div>
-      </div>
-    </div>
+        <SmallDiceContainer>
+          <SmallDice>
+            <FontAwesomeIcon icon={faDice} />
+            <HeroP>{count}</HeroP>
+          </SmallDice>
+        </SmallDiceContainer>
+      </ButtonContainer>
+    </HeroWrapper>
   );
 };
