@@ -37,7 +37,6 @@ const Main = () => {
     if (theBestScore > count) {
       localStorage.setItem("bestScore", JSON.stringify(count));
       setTheBestScore(Number(localStorage.getItem("bestScore")));
-      console.log("Jestem w środku");
     }
   };
 

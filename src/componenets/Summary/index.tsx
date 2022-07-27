@@ -28,7 +28,7 @@ export const Summary = (props: summaryProps) => {
       <SummaryHeader>Summary</SummaryHeader>
       <Scoreboard>
         <Casual>
-          <BestOfDice color={""}>
+          <BestOfDice color={"black"}>
             <FontAwesomeIcon icon={faDice} />
           </BestOfDice>
           <FirstDiceP>{props.count}</FirstDiceP>
